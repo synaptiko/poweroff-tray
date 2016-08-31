@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
+import os
 from pystray import Icon, Menu, MenuItem
 from subprocess import call, DEVNULL
 from PIL import Image, ImageDraw
 
-image = Image.open('./icon.png')
+rootDir = os.path.dirname(os.path.realpath(__file__))
+
+image = Image.open(os.path.join(rootDir, 'icon.png'))
 image.load()
 
 def onPowerOff(icon):
-    call(['./power-off.sh'], stdout=DEVNULL, stderr=DEVNULL)
+    call([os.path.join(rootDir, 'power-off.sh')], stdout=DEVNULL, stderr=DEVNULL, cwd=rootDir)
 
 def onRestart(icon):
-    call(['./restart.sh'], stdout=DEVNULL, stderr=DEVNULL)
+    call([os.path.join(rootDir, 'restart.sh')], stdout=DEVNULL, stderr=DEVNULL, cwd=rootDir)
 
 menu = Menu(
         MenuItem('Power Off', onPowerOff, True),
