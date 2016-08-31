@@ -9,6 +9,10 @@ Dependencies
 - [`zenity`](https://library.gnome.org/users/zenity/stable/)
 - `bash`
 
+How to install it?
+==================
+Clone this repo and run `pip install -r requirements.txt` inside it.
+
 How to use it?
 ==============
 Add the following into your i3 config file (e.g. `~/.config/i3/config`):
