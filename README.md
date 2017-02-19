@@ -22,5 +22,5 @@ exec --no-startup-id /home/xy/SomeStuff/poweroff-tray/run.py >& /dev/null &
 
 You'll also need something like this in your `suders.d` file:
 ```
-user machine= NOPASSWD: /usr/bin/shutdown now, /usr/bin/reboot, /usr/bin/systemctl hibernate, /usr/bin/systemctl suspend
+user machine= NOPASSWD: /usr/bin/shutdown now, /usr/bin/reboot
 ```

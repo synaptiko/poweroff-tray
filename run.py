@@ -9,12 +9,6 @@ rootDir = os.path.dirname(os.path.realpath(__file__))
 image = Image.open(os.path.join(rootDir, 'icon.png'))
 image.load()
 
-def onHibernate(icon):
-    call([os.path.join(rootDir, 'hibernate.sh')], stdout=DEVNULL, stderr=DEVNULL, cwd=rootDir)
-
-def onSuspend(icon):
-    call([os.path.join(rootDir, 'suspend.sh')], stdout=DEVNULL, stderr=DEVNULL, cwd=rootDir)
-
 def onPowerOff(icon):
     call([os.path.join(rootDir, 'power-off.sh')], stdout=DEVNULL, stderr=DEVNULL, cwd=rootDir)
 
@@ -22,11 +16,9 @@ def onRestart(icon):
     call([os.path.join(rootDir, 'restart.sh')], stdout=DEVNULL, stderr=DEVNULL, cwd=rootDir)
 
 menu = Menu(
-        MenuItem('Hibernate', onHibernate, True),
-        MenuItem('Suspend', onSuspend),
-        MenuItem('Power Off', onPowerOff),
+        MenuItem('Power Off', onPowerOff, True),
         MenuItem('Restart', onRestart))
-icon = Icon(name='poweroff-tray', title='Hibernate/Suspend/Power Off/Restart', icon=image, menu=menu)
+icon = Icon(name='poweroff-tray', title='Power Off/Restart', icon=image, menu=menu)
 
 def setup(icon):
     icon.visible = True
